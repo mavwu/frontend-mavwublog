@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://mavwublog.onrender.com/sitemap.xml

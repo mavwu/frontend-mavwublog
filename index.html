@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="isVcoNs4U_HhFfkXZRauLFooRWz3--BDCttmvIDAvlU" />
+
+  <title>Mavwu Blog | Alfred Mavwu</title>
+
+  <meta name="description"
+    content="Mavwu Blog by Alfred Mavwu — a simple blog platform to read posts and share your thoughts. Login or sign up to start writing." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Alfred Mavwu" />
+
+  <link rel="canonical" href="https://mavwublog.onrender.com/" />
+
+  <meta property="og:title" content="Mavwu Blog | Alfred Mavwu" />
+  <meta property="og:description"
+    content="A simple blog platform to read posts and share your thoughts. Login or sign up to start writing." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mavwublog.onrender.com/" />
+  <meta property="og:image" content="https://mavwublog.onrender.com/images/og-preview.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mavwu Blog | Alfred Mavwu" />
+  <meta name="twitter:description"
+    content="A simple blog platform to read posts and share your thoughts." />
+  <meta name="twitter:image" content="https://mavwublog.onrender.com/images/og-preview.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Candal|Lora">
+  <script src="https://kit.fontawesome.com/09e2129185.js" crossorigin="anonymous"></script>
+
+  <link rel="icon" href="/images/favicon.png" />
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Mavwu Blog",
+    "url": "https://mavwublog.onrender.com/",
+    "author": {
+      "@type": "Person",
+      "name": "Alfred Mavwu"
+    }
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- HEADER / NAV -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#home" aria-label="Go to homepage">
+        <span class="brand-name">Mavwu</span>
+      </a>
+
+      <i class="fa fa-bars menu-toggle" id="toggle" aria-label="Open menu" role="button" tabindex="0"></i>
+
+      <ul class="nav" id="navMenu" aria-label="Main navigation">
+        <li class="nav-row">
+          <span class="nav-title">Menu</span>
+          <i class="fa fa-x menu-close" id="close" aria-label="Close menu" role="button" tabindex="0"></i>
+        </li>
+
+        <li><a href="#home">Home</a></li>
+        <li><a href="#contacts">Contact</a></li>
+        <li><a class="nav-login" href="/login/login.html">Login</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main id="home" class="main">
+    <div class="container">
+      <section class="card">
+        <h1 class="title" id="pageTop">Welcome to Mavwu Blog 🙂</h1>
+
+        <p class="subtitle">
+          This is a simple blog website created by Alfred Mavwu for practicing web development.
+          You can use this platform to share your thoughts or read what others have shared.
+        </p>
+
+        <p id="welcome-user" class="welcome" aria-live="polite"></p>
+
+        <div class="actions">
+          <a class="btn primary" href="/login/login.html">
+            <i class="fa fa-right-to-bracket"></i> Login
+          </a>
+          <a class="btn secondary" href="/signup/signup.html">
+            <i class="fa fa-user-plus"></i> Sign Up
+          </a>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="contacts">
+    <div class="container footer-grid">
+      <div>
+        <h2 class="footer-title">Mavwu</h2>
+        <p class="footer-text">
+          Welcome to our small community of bloggers. Simple space, simple ideas, and real practice 🙂✨
+        </p>
+
+        <div class="footer-contact">
+          <div><i class="fas fa-phone"></i> <span>+260 972073035</span></div>
+          <div><i class="fas fa-envelope"></i> <span>viwaplayz@gmail.com</span></div>
+        </div>
+
+        <div class="socials">
+          <a href="https://web.facebook.com/profile.php?id=61556678093170" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://www.youtube.com/@WanguCS" target="_blank" rel="noopener" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a href="https://www.tiktok.com/@mavwu" target="_blank" rel="noopener" aria-label="TikTok">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a href="https://wa.me/260972073035" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+
+        <a class="back-top" href="#pageTop">Back to top ↑</a>
+      </div>
+
+      <div class="contact-box">
+        <h3 class="contact-title">Send a message</h3>
+        <p class="contact-hint">This opens your email app with your message 🙂</p>
+
+        <textarea id="userMessage" class="contact-input" placeholder="Enter your message...."></textarea>
+
+        <button id="sendEmailButton" class="send-btn" type="button">
+          <i class="fas fa-envelope"></i> Send
+        </button>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 Mavwu | Designed by Alfred Mavwu
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Welcome username: ?username=Alfy
+      const params = new URLSearchParams(window.location.search);
+      const username = params.get('username');
+      const welcomeEl = document.getElementById('welcome-user');
+      if (welcomeEl && username) {
+        welcomeEl.textContent = `Welcome, ${username}! 🎉`;
+      }
+
+      // Contact via mailto
+      const sendBtn = document.getElementById('sendEmailButton');
+      const msgEl = document.getElementById('userMessage');
+
+      if (sendBtn && msgEl) {
+        sendBtn.addEventListener('click', () => {
+          const me = 'viwaplayz@gmail.com';
+          const userMessage = msgEl.value.trim();
+
+          if (!userMessage) {
+            alert('Please enter a message first 🙂');
+            return;
+          }
+
+          const subject = encodeURIComponent('Mavwu Blog Feedback');
+          const body = encodeURIComponent(userMessage);
+          window.location.href = `mailto:${me}?subject=${subject}&body=${body}`;
+        });
+      }
+
+      // Mobile nav menu
+      const navMenu = document.getElementById('navMenu');
+      const menuToggle = document.getElementById('toggle');
+      const closeMenu = document.getElementById('close');
+
+      const openMenu = () => navMenu.classList.add('show');
+      const closeNav = () => navMenu.classList.remove('show');
+
+      if (menuToggle && closeMenu && navMenu) {
+        menuToggle.addEventListener('click', openMenu);
+        closeMenu.addEventListener('click', closeNav);
+
+        menuToggle.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') openMenu();
+        });
+
+        closeMenu.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') closeNav();
+        });
+
+        navMenu.querySelectorAll('a').forEach(a => {
+          a.addEventListener('click', closeNav);
+        });
+      }
+    });
+  </script>
+
+</body>
+
+</html>

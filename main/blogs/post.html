@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Candal|Lora">
+  <script src="https://kit.fontawesome.com/09e2129185.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="blogs.css">
+  <link rel="icon" href="/images/favicon.png" />
+  <title>Post | Mavwu</title>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="topbar" id="pageTop">
+    <div class="container topbar-inner">
+      <a class="brand" href="/main/dashboard.html" aria-label="Go to dashboard">
+        <span class="brand-name">Mavwu</span>
+      </a>
+
+      <i class="fa fa-bars menu-toggle" id="toggle" aria-label="Open menu" role="button" tabindex="0"></i>
+
+      <ul class="nav" id="navMenu" aria-label="Navigation">
+        <li class="nav-row">
+          <span class="nav-title">Menu</span>
+          <i class="fa fa-x menu-close" id="close" aria-label="Close menu" role="button" tabindex="0"></i>
+        </li>
+
+        <li><a href="/main/dashboard.html">Home</a></li>
+        <li><a href="/main/blogs/allposts.html">Post Feed</a></li>
+        <li><a href="/main/blogs/myposts.html">My Posts</a></li>
+        <li><a href="/main/settings.html">Settings</a></li>
+        <li><a href="#contacts">Contact</a></li>
+
+        <!-- Account dropdown -->
+        <li class="dropdown">
+          <button class="dropdown-toggle" id="accountToggle" type="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-user"></i>
+            <span>Account</span>
+            <i class="fa fa-chevron-down drop-icon"></i>
+          </button>
+
+          <ul class="dropdown-menu" id="accountMenu" aria-label="Account menu">
+            <li><a class="menu-item" href="/main/blogeditor/blogeditor.html">Blog Editor</a></li>
+            <li><a class="menu-item logout" href="/logout">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="container">
+
+      <!-- Post -->
+      <section class="card post-page">
+        <div class="post-topbar">
+          <a class="btn ghost" href="/main/blogs/allposts.html"><i class="fa fa-arrow-left"></i> Back to feed</a>
+
+          <div class="post-actions">
+            <button id="edit-post-btn" class="btn primary" type="button">
+              <i class="fa fa-pen"></i> Edit
+            </button>
+
+            <button id="delete-post-btn" class="btn danger" type="button">
+              <i class="fa fa-trash"></i> Delete
+            </button>
+          </div>
+        </div>
+
+        <article id="full-post-container" class="article-box">
+          <!-- Full post loads here -->
+          <div class="empty-state">
+            <div class="empty-icon"><i class="fa fa-spinner"></i></div>
+            <h2>Loading post...</h2>
+            <p>Please wait 🙂</p>
+          </div>
+        </article>
+      </section>
+
+      <!-- Comments -->
+      <section class="card comments-page">
+        <h2 class="title-sm">Comments 💬</h2>
+        <p class="subtitle">Say something helpful or respectful 🙂</p>
+
+        <form id="comment-form" action="/addComment" method="post" class="comment-form">
+          <textarea rows="4" name="content" class="comment-input" placeholder="Enter your comment..." required></textarea>
+
+          <div class="comment-form-row">
+            <button type="submit" class="btn primary">
+              <i class="fa fa-paper-plane"></i> Add Comment
+            </button>
+          </div>
+
+          <div id="comments-section" class="comments-list">
+            <!-- comments load here -->
+          </div>
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="contacts">
+    <div class="container footer-grid">
+      <div>
+        <h2 class="footer-title">Mavwu</h2>
+        <p class="footer-text">
+          Welcome to our small community of bloggers. Simple space, real practice 🙂✨
+        </p>
+
+        <div class="footer-contact">
+          <div><i class="fas fa-phone"></i> <span>+260 972073035</span></div>
+          <div><i class="fas fa-envelope"></i> <span>viwaplayz@gmail.com</span></div>
+        </div>
+
+        <div class="socials">
+          <a href="https://web.facebook.com/profile.php?id=61556678093170" target="_blank" rel="noopener"
+            aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.youtube.com/@WanguCS" target="_blank" rel="noopener"
+            aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.tiktok.com/@mavwu" target="_blank" rel="noopener"
+            aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://wa.me/260972073035" target="_blank" rel="noopener"
+            aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+
+        <a class="back-top" href="#pageTop">Back to top ↑</a>
+      </div>
+
+      <div class="contact-box">
+        <h3 class="contact-title">Send a message</h3>
+        <p class="contact-hint">This opens your email app with your message 🙂</p>
+
+        <textarea id="userMessage" class="contact-input" placeholder="Enter your message...."></textarea>
+
+        <button id="sendEmailButton" class="send-btn" type="button">
+          <i class="fas fa-envelope"></i> Send
+        </button>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 Mavwu | Designed by Alfred Mavwu
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // mailto
+      const sendBtn = document.getElementById('sendEmailButton');
+      const msgEl = document.getElementById('userMessage');
+
+      if (sendBtn && msgEl) {
+        sendBtn.addEventListener('click', () => {
+          const me = 'viwaplayz@gmail.com';
+          const userMessage = msgEl.value.trim();
+
+          if (!userMessage) {
+            alert('Please enter a message first 🙂');
+            return;
+          }
+
+          const subject = encodeURIComponent('Mavwu Blog Feedback');
+          const body = encodeURIComponent(userMessage);
+          window.location.href = `mailto:${me}?subject=${subject}&body=${body}`;
+        });
+      }
+
+      // Mobile nav menu
+      const navMenu = document.getElementById('navMenu');
+      const menuToggle = document.getElementById('toggle');
+      const closeMenu = document.getElementById('close');
+
+      const openMenu = () => navMenu.classList.add('show');
+      const closeNav = () => navMenu.classList.remove('show');
+
+      if (menuToggle && closeMenu && navMenu) {
+        menuToggle.addEventListener('click', openMenu);
+        closeMenu.addEventListener('click', closeNav);
+
+        menuToggle.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') openMenu();
+        });
+
+        closeMenu.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') closeNav();
+        });
+      }
+
+      // Account dropdown
+      const accountToggle = document.getElementById('accountToggle');
+      const accountMenu = document.getElementById('accountMenu');
+
+      const closeAccount = () => {
+        if (!accountMenu || !accountToggle) return;
+        accountMenu.classList.remove('open');
+        accountToggle.setAttribute('aria-expanded', 'false');
+      };
+
+      const toggleAccount = () => {
+        if (!accountMenu || !accountToggle) return;
+        const isOpen = accountMenu.classList.toggle('open');
+        accountToggle.setAttribute('aria-expanded', String(isOpen));
+      };
+
+      if (accountToggle && accountMenu) {
+        accountToggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleAccount();
+        });
+
+        document.addEventListener('click', closeAccount);
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') closeAccount();
+        });
+      }
+    });
+
+    // ===== Helpers =====
+    function formatDate(dateString) {
+      const options = { day: 'numeric', month: 'long', year: 'numeric' };
+      return new Date(dateString).toLocaleDateString('en-GB', options);
+    }
+
+    function escapeHTML(str) {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    // ===== Display full post =====
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const postId = params.get('id');
+
+      const fullPostContainer = document.getElementById('full-post-container');
+
+      if (!postId) {
+        fullPostContainer.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-icon"><i class="fa fa-triangle-exclamation"></i></div>
+            <h2>Post not found</h2>
+            <p>Missing post id in the URL 😬</p>
+          </div>
+        `;
+        return;
+      }
+
+      fetch(`/displayPost?id=${postId}`)
+        .then(response => {
+          if (!response.ok) throw new Error('Post not found');
+          return response.json();
+        })
+        .then(post => {
+          const title = escapeHTML(post.title || "Untitled");
+          const author = escapeHTML(post.author || "Unknown");
+          const date = formatDate(post.date);
+          const content = escapeHTML(post.content || "").replaceAll("\n", "<br>");
+
+          document.title = `${title} | Mavwu`;
+
+          fullPostContainer.innerHTML = `
+            <h1 class="article-title">${title}</h1>
+
+            <div class="article-meta">
+              <span class="pill"><i class="fa fa-user"></i> ${author}</span>
+              <span class="pill ghost"><i class="fa fa-calendar"></i> ${date}</span>
+            </div>
+
+            <div class="article-content">${content}</div>
+          `;
+        })
+        .catch((error) => {
+          console.error('Error fetching full post:', error);
+          fullPostContainer.innerHTML = `
+            <div class="empty-state">
+              <div class="empty-icon"><i class="fa fa-triangle-exclamation"></i></div>
+              <h2>No post available</h2>
+              <p>Back to <a href="/main/blogs/allposts.html">Post Feed</a></p>
+            </div>
+          `;
+        });
+    });
+
+    // ===== Comments =====
+    document.addEventListener('DOMContentLoaded', () => {
+      function displayComments(comments) {
+        const commentsSection = document.getElementById('comments-section');
+        commentsSection.innerHTML = '';
+
+        if (!comments || comments.length === 0) {
+          commentsSection.innerHTML = `
+            <div class="empty-state">
+              <div class="empty-icon"><i class="fa fa-comment"></i></div>
+              <h2>No comments yet</h2>
+              <p>Be the first to comment 🙂</p>
+            </div>
+          `;
+          return;
+        }
+
+        comments.forEach(comment => {
+          const author = escapeHTML(comment.author || "Unknown");
+          const content = escapeHTML(comment.content || "").replaceAll("\n", "<br>");
+          const date = formatDate(comment.date);
+
+          const commentElement = document.createElement('div');
+          commentElement.className = 'comment-card';
+          commentElement.innerHTML = `
+            <div class="comment-top">
+              <span class="pill"><i class="fa fa-user"></i> ${author}</span>
+              <span class="pill ghost"><i class="fa fa-calendar"></i> ${date}</span>
+            </div>
+            <div class="comment-body">${content}</div>
+          `;
+
+          commentsSection.appendChild(commentElement);
+        });
+      }
+
+      function fetchComments() {
+        const params = new URLSearchParams(window.location.search);
+        const postId = params.get('id');
+
+        fetch(`/getComments?postId=${postId}`)
+          .then(response => response.json())
+          .then(comments => displayComments(comments))
+          .catch(error => {
+            console.error('Error fetching comments:', error);
+            alert('Failed to fetch comments. Please try again later 😬');
+          });
+      }
+
+      fetchComments();
+    });
+
+    // ===== Delete post =====
+    document.addEventListener('DOMContentLoaded', () => {
+      const deletePostButton = document.getElementById('delete-post-btn');
+      if (deletePostButton) {
+        deletePostButton.addEventListener('click', () => {
+          if (confirm('Are you sure you want to delete this post?')) {
+            deletePost();
+          }
+        });
+      }
+    });
+
+    function deletePost() {
+      const params = new URLSearchParams(window.location.search);
+      const postId = params.get('id');
+
+      fetch(`/deletePost?id=${postId}`, { method: 'DELETE' })
+        .then(response => {
+          if (response.ok) {
+            window.location.href = '/main/blogs/myposts.html';
+          } else {
+            alert('Failed to delete post. You do not have permission 😬');
+          }
+        })
+        .catch(error => {
+          console.error('Error deleting post:', error);
+          alert('Failed to delete post. Please try again later.');
+        });
+    }
+
+    // ===== Edit post =====
+    document.addEventListener('DOMContentLoaded', () => {
+      const editPostButton = document.getElementById('edit-post-btn');
+      if (editPostButton) {
+        editPostButton.addEventListener('click', () => {
+          const params = new URLSearchParams(window.location.search);
+          const postId = params.get('id');
+          window.location.href = `/main/blogeditor/blogeditor.html?edit=true&id=${postId}`;
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>

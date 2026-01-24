@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Candal|Lora">
+  <script src="https://kit.fontawesome.com/09e2129185.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="blogs.css" />
+  <link rel="icon" href="/images/favicon.png" />
+  <title>My Posts | Mavwu</title>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="topbar" id="pageTop">
+    <div class="container topbar-inner">
+      <a class="brand" href="/main/dashboard.html" aria-label="Go to dashboard">
+        <span class="brand-name">Mavwu</span>
+      </a>
+
+      <i class="fa fa-bars menu-toggle" id="toggle" aria-label="Open menu" role="button" tabindex="0"></i>
+
+      <ul class="nav" id="navMenu" aria-label="Navigation">
+        <li class="nav-row">
+          <span class="nav-title">Menu</span>
+          <i class="fa fa-x menu-close" id="close" aria-label="Close menu" role="button" tabindex="0"></i>
+        </li>
+
+        <li><a href="/main/dashboard.html">Home</a></li>
+        <li><a class="nav-active" href="/main/blogs/myposts.html">My Posts</a></li>
+        <li><a href="/main/blogs/allposts.html">Post Feed</a></li>
+        <li><a href="/main/settings.html">Settings</a></li>
+        <li><a href="#contacts">Contact</a></li>
+
+        <!-- Account dropdown -->
+        <li class="dropdown">
+          <button class="dropdown-toggle" id="accountToggle" type="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-user"></i>
+            <span>Account</span>
+            <i class="fa fa-chevron-down drop-icon"></i>
+          </button>
+
+          <ul class="dropdown-menu" id="accountMenu" aria-label="Account menu">
+            <li><a class="menu-item" href="/main/blogeditor/blogeditor.html">Blog Editor</a></li>
+            <li><a class="menu-item logout" href="/logout">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="container">
+
+      <section class="card">
+        <div class="feed-top">
+          <div>
+            <h1 class="title">My Posts ✍️</h1>
+            <p class="subtitle">These are the posts you created. Click one to open it 🙂</p>
+          </div>
+
+          <a class="btn primary" href="/main/blogeditor/blogeditor.html">
+            <i class="fa fa-pen-to-square"></i> Create Post
+          </a>
+        </div>
+
+        <!-- Posts render here -->
+        <div id="blog-posts-container" class="posts-grid">
+          <div class="empty-state" id="no-posts">
+            <div class="empty-icon"><i class="fa fa-file-lines"></i></div>
+            <h2>No Posts available..</h2>
+            <p>Create your first post using Blog Editor 😄</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="contacts">
+    <div class="container footer-grid">
+      <div>
+        <h2 class="footer-title">Mavwu</h2>
+        <p class="footer-text">
+          Welcome to our small community of bloggers. Simple space, real practice 🙂✨
+        </p>
+
+        <div class="footer-contact">
+          <div><i class="fas fa-phone"></i> <span>+260 972073035</span></div>
+          <div><i class="fas fa-envelope"></i> <span>viwaplayz@gmail.com</span></div>
+        </div>
+
+        <div class="socials">
+          <a href="https://web.facebook.com/profile.php?id=61556678093170" target="_blank" rel="noopener"
+            aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.youtube.com/@WanguCS" target="_blank" rel="noopener"
+            aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.tiktok.com/@mavwu" target="_blank" rel="noopener"
+            aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://wa.me/260972073035" target="_blank" rel="noopener"
+            aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+
+        <a class="back-top" href="#pageTop">Back to top ↑</a>
+      </div>
+
+      <div class="contact-box">
+        <h3 class="contact-title">Send a message</h3>
+        <p class="contact-hint">This opens your email app with your message 🙂</p>
+
+        <textarea id="userMessage" class="contact-input" placeholder="Enter your message...."></textarea>
+
+        <button id="sendEmailButton" class="send-btn" type="button">
+          <i class="fas fa-envelope"></i> Send
+        </button>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 Mavwu | Designed by Alfred Mavwu
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // Contact via mailto (same logic)
+      const sendBtn = document.getElementById('sendEmailButton');
+      const msgEl = document.getElementById('userMessage');
+
+      if (sendBtn && msgEl) {
+        sendBtn.addEventListener('click', () => {
+          const me = 'viwaplayz@gmail.com';
+          const userMessage = msgEl.value.trim();
+
+          if (!userMessage) {
+            alert('Please enter a message first 🙂');
+            return;
+          }
+
+          const subject = encodeURIComponent('Mavwu Blog Feedback');
+          const body = encodeURIComponent(userMessage);
+          window.location.href = `mailto:${me}?subject=${subject}&body=${body}`;
+        });
+      }
+
+      // Mobile nav menu (same logic)
+      const navMenu = document.getElementById('navMenu');
+      const menuToggle = document.getElementById('toggle');
+      const closeMenu = document.getElementById('close');
+
+      const openMenu = () => navMenu.classList.add('show');
+      const closeNav = () => navMenu.classList.remove('show');
+
+      if (menuToggle && closeMenu && navMenu) {
+        menuToggle.addEventListener('click', openMenu);
+        closeMenu.addEventListener('click', closeNav);
+
+        menuToggle.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') openMenu();
+        });
+
+        closeMenu.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') closeNav();
+        });
+      }
+
+      // Account dropdown
+      const accountToggle = document.getElementById('accountToggle');
+      const accountMenu = document.getElementById('accountMenu');
+
+      const closeAccount = () => {
+        if (!accountMenu || !accountToggle) return;
+        accountMenu.classList.remove('open');
+        accountToggle.setAttribute('aria-expanded', 'false');
+      };
+
+      const toggleAccount = () => {
+        if (!accountMenu || !accountToggle) return;
+        const isOpen = accountMenu.classList.toggle('open');
+        accountToggle.setAttribute('aria-expanded', String(isOpen));
+      };
+
+      if (accountToggle && accountMenu) {
+        accountToggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleAccount();
+        });
+
+        document.addEventListener('click', closeAccount);
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') closeAccount();
+        });
+      }
+
+      // ===== BLOG POSTS (your same /myPosts logic) =====
+      function formatDate(dateString) {
+        const options = { day: 'numeric', month: 'long', year: 'numeric' };
+        return new Date(dateString).toLocaleDateString('en-GB', options);
+      }
+
+      function escapeHTML(str) {
+        return String(str)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function loadMyBlogPosts() {
+        fetch('/myPosts')
+          .then(response => response.json())
+          .then(posts => {
+            const postsContainer = document.getElementById('blog-posts-container');
+            postsContainer.innerHTML = '';
+
+            if (!posts || posts.length === 0) {
+              postsContainer.innerHTML = `
+                <div class="empty-state" id="no-posts">
+                  <div class="empty-icon"><i class="fa fa-file-lines"></i></div>
+                  <h2>No Posts available..</h2>
+                  <p>Create your first post using Blog Editor 😄</p>
+                </div>
+              `;
+              return;
+            }
+
+            posts.forEach(post => {
+              const title = escapeHTML(post.title || "Untitled");
+              const author = escapeHTML(post.author || "Unknown");
+              const snippet = escapeHTML((post.content || "").substring(0, 140));
+
+              const postEl = document.createElement('article');
+              postEl.className = 'post-card';
+              postEl.innerHTML = `
+                <div class="post-meta">
+                  <span class="pill"><i class="fa fa-user"></i> ${author}</span>
+                  <span class="pill ghost"><i class="fa fa-calendar"></i> ${formatDate(post.date)}</span>
+                </div>
+
+                <h2 class="post-title">${title}</h2>
+                <p class="post-snippet">${snippet}${(post.content && post.content.length > 140) ? "..." : ""}</p>
+
+                <div class="post-footer">
+                  <span class="readmore">Open post →</span>
+                </div>
+              `;
+
+              postEl.addEventListener('click', () => {
+                window.location.href = `/main/blogs/post.html?id=${post.id}`;
+              });
+
+              postsContainer.appendChild(postEl);
+            });
+          })
+          .catch((error) => {
+            console.error('Error fetching blog posts:', error);
+            const postsContainer = document.getElementById('blog-posts-container');
+            postsContainer.innerHTML = `
+              <div class="empty-state">
+                <div class="empty-icon"><i class="fa fa-triangle-exclamation"></i></div>
+                <h2>Could not load your posts</h2>
+                <p>Make sure you're logged in and the server is running 😬</p>
+              </div>
+            `;
+          });
+      }
+
+      loadMyBlogPosts();
+    });
+  </script>
+
+</body>
+</html>

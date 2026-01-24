@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description" content="Mavwu Blog dashboard — create posts, view posts, and manage your account." />
+  <meta name="author" content="Alfred Mavwu" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Candal|Lora">
+  <script src="https://kit.fontawesome.com/09e2129185.js" crossorigin="anonymous"></script>
+
+  <link rel="icon" href="/images/favicon.png" />
+  <link rel="stylesheet" href="dashboard.css" />
+
+  <title>Dashboard | Mavwu Blog</title>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="topbar" id="pageTop">
+    <div class="container topbar-inner">
+      <a class="brand" href="/main/dashboard.html" aria-label="Go to dashboard">
+        <span class="brand-name">Mavwu</span>
+      </a>
+
+      <i class="fa fa-bars menu-toggle" id="toggle" aria-label="Open menu" role="button" tabindex="0"></i>
+
+      <ul class="nav" id="navMenu" aria-label="Dashboard navigation">
+        <li class="nav-row">
+          <span class="nav-title">Menu</span>
+          <i class="fa fa-x menu-close" id="close" aria-label="Close menu" role="button" tabindex="0"></i>
+        </li>
+
+        <li><a href="/main/dashboard.html">Home</a></li>
+        <li><a href="/main/blogs/myposts.html">My Posts</a></li>
+        <li><a href="/main/settings.html">Settings</a></li>
+        <li><a href="#contacts">Contact</a></li>
+
+        <!-- Account dropdown -->
+        <li class="dropdown">
+          <button class="dropdown-toggle" id="accountToggle" type="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-user"></i>
+            <span>Account</span>
+            <i class="fa fa-chevron-down drop-icon"></i>
+          </button>
+
+          <ul class="dropdown-menu" id="accountMenu" aria-label="Account menu">
+            <li><a class="menu-item" href="/main/blogeditor/blogeditor.html">Blog Editor</a></li>
+            <li><a class="menu-item logout" href="/logout">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="container">
+      <section class="card">
+        <div class="card-top">
+          <div>
+            <h1 class="title">Dashboard 🙂</h1>
+            <p class="subtitle">
+              Quick actions to create posts, view your feed, and manage settings.
+            </p>
+          </div>
+
+          <div class="welcome-badge" id="welcome-user" aria-live="polite"></div>
+        </div>
+
+        <div class="dash-grid">
+          <a class="action-card" href="/main/blogeditor/blogeditor.html">
+            <div class="action-icon"><i class="fa fa-pen-to-square"></i></div>
+            <div>
+              <h3>Create a Post</h3>
+              <p>Open the editor and start writing.</p>
+            </div>
+          </a>
+
+          <a class="action-card" href="/main/blogs/allposts.html">
+            <div class="action-icon"><i class="fa fa-newspaper"></i></div>
+            <div>
+              <h3>View Posts</h3>
+              <p>Browse the main feed and read posts.</p>
+            </div>
+          </a>
+
+          <a class="action-card" href="/main/blogs/myposts.html">
+            <div class="action-icon"><i class="fa fa-folder-open"></i></div>
+            <div>
+              <h3>Your Posts</h3>
+              <p>See what you’ve published.</p>
+            </div>
+          </a>
+
+          <a class="action-card" href="/main/settings.html">
+            <div class="action-icon"><i class="fa fa-gear"></i></div>
+            <div>
+              <h3>Settings</h3>
+              <p>Update account and preferences.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="small-note">
+          <i class="fa fa-circle-info"></i>
+          Tip: Keep post titles short — it makes your feed look cleaner 😄
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="contacts">
+    <div class="container footer-grid">
+      <div>
+        <h2 class="footer-title">Mavwu</h2>
+        <p class="footer-text">
+          Welcome to our community of bloggers. Simple space, real practice 🙂✨
+        </p>
+
+        <div class="footer-contact">
+          <div><i class="fas fa-phone"></i> <span>+260 972073035</span></div>
+          <div><i class="fas fa-envelope"></i> <span>viwaplayz@gmail.com</span></div>
+        </div>
+
+        <div class="socials">
+          <a href="https://web.facebook.com/profile.php?id=61556678093170" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://www.youtube.com/@WanguCS" target="_blank" rel="noopener" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a href="https://www.tiktok.com/@mavwu" target="_blank" rel="noopener" aria-label="TikTok">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a href="https://wa.me/260972073035" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+
+        <a class="back-top" href="#pageTop">Back to top ↑</a>
+      </div>
+
+      <div class="contact-box">
+        <h3 class="contact-title">Send a message</h3>
+        <p class="contact-hint">This opens your email app with your message 🙂</p>
+
+        <textarea id="userMessage" class="contact-input" placeholder="Enter your message...."></textarea>
+
+        <button id="sendEmailButton" class="send-btn" type="button">
+          <i class="fas fa-envelope"></i> Send
+        </button>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 Mavwu | Designed by Alfred Mavwu
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Welcome username from URL: ?username=Alfy
+      const params = new URLSearchParams(window.location.search);
+      const username = params.get('username');
+      const welcome = document.getElementById('welcome-user');
+      if (welcome && username) {
+        welcome.innerHTML = `<b>Welcome, ${username}! 🎉</b>`;
+      } else if (welcome) {
+        welcome.textContent = "Welcome! 🙂";
+      }
+
+      // Alerts after changes
+      const usernameChange = params.get('usernamechange');
+      if (usernameChange !== null) {
+        alert('Username successfully changed ✅');
+      }
+
+      const passwordChange = params.get('passwordchange');
+      if (passwordChange !== null) {
+        alert('Password successfully changed ✅');
+      }
+
+      // Contact via mailto
+      const sendBtn = document.getElementById('sendEmailButton');
+      const msgEl = document.getElementById('userMessage');
+
+      if (sendBtn && msgEl) {
+        sendBtn.addEventListener('click', () => {
+          const me = 'viwaplayz@gmail.com';
+          const userMessage = msgEl.value.trim();
+
+          if (!userMessage) {
+            alert('Please enter a message first 🙂');
+            return;
+          }
+
+          const subject = encodeURIComponent('Mavwu Blog Feedback');
+          const body = encodeURIComponent(userMessage);
+          window.location.href = `mailto:${me}?subject=${subject}&body=${body}`;
+        });
+      }
+
+      // Mobile nav menu
+      const navMenu = document.getElementById('navMenu');
+      const menuToggle = document.getElementById('toggle');
+      const closeMenu = document.getElementById('close');
+
+      const openMenu = () => navMenu.classList.add('show');
+      const closeNav = () => navMenu.classList.remove('show');
+
+      if (menuToggle && closeMenu && navMenu) {
+        menuToggle.addEventListener('click', openMenu);
+        closeMenu.addEventListener('click', closeNav);
+
+        menuToggle.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') openMenu();
+        });
+
+        closeMenu.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') closeNav();
+        });
+      }
+
+      // Account dropdown (human-simple)
+      const accountToggle = document.getElementById('accountToggle');
+      const accountMenu = document.getElementById('accountMenu');
+
+      const closeAccount = () => {
+        if (!accountMenu || !accountToggle) return;
+        accountMenu.classList.remove('open');
+        accountToggle.setAttribute('aria-expanded', 'false');
+      };
+
+      const toggleAccount = () => {
+        if (!accountMenu || !accountToggle) return;
+        const isOpen = accountMenu.classList.toggle('open');
+        accountToggle.setAttribute('aria-expanded', String(isOpen));
+      };
+
+      if (accountToggle && accountMenu) {
+        accountToggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleAccount();
+        });
+
+        document.addEventListener('click', closeAccount);
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') closeAccount();
+        });
+      }
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Login | Mavwu Blog</title>
+
+  <meta name="robots" content="index, follow" />
+  <meta name="description" content="Login to Mavwu Blog to start writing and sharing posts." />
+  <meta name="author" content="Alfred Mavwu" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Candal|Lora">
+  <script src="https://kit.fontawesome.com/09e2129185.js" crossorigin="anonymous"></script>
+
+  <link rel="icon" href="/images/favicon.png" />
+  <link rel="stylesheet" href="login.css" />
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="topbar" id="pageTop">
+    <div class="container topbar-inner">
+      <a class="brand" href="/" aria-label="Go to homepage">
+        <span class="brand-name">Mavwu</span>
+      </a>
+
+      <i class="fa fa-bars menu-toggle" id="toggle" aria-label="Open menu" role="button" tabindex="0"></i>
+
+      <ul class="nav" id="navMenu" aria-label="Main navigation">
+        <li class="nav-row">
+          <span class="nav-title">Menu</span>
+          <i class="fa fa-x menu-close" id="close" aria-label="Close menu" role="button" tabindex="0"></i>
+        </li>
+
+        <li><a href="/">Home</a></li>
+        <li><a href="#contacts">Contact</a></li>
+        <li><a class="nav-login" href="/signup/signup.html">Sign Up</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="container">
+      <section class="card">
+        <h1 class="title">Login 🙂</h1>
+        <p class="subtitle">
+          Log in to your account to start writing. Don’t have one? <a class="inline-link" href="/signup/signup.html">Sign up here</a> 😄
+        </p>
+
+        <!-- Optional message area (you had signupmessage) -->
+        <p id="signupmessage" class="notice" aria-live="polite"></p>
+
+        <form action="/login" method="post" class="form">
+          <label class="field">
+            <span class="label">Username</span>
+            <div class="input-wrap">
+              <i class="fa fa-user icon"></i>
+              <input type="text" name="username" placeholder="Enter your username" required autocomplete="username" />
+            </div>
+          </label>
+
+          <label class="field">
+            <span class="label">Password</span>
+            <div class="input-wrap">
+              <i class="fa fa-lock icon"></i>
+              <input type="password" name="password" placeholder="Enter your password" required autocomplete="current-password" />
+            </div>
+          </label>
+
+          <button type="submit" class="btn primary" id="submit-button">
+            <i class="fa fa-right-to-bracket"></i> Login
+          </button>
+
+          <a class="btn secondary" id="sign-up-button" href="/signup/signup.html">
+            <i class="fa fa-user-plus"></i> Sign Up
+          </a>
+        </form>
+
+        <div class="small-note">
+          <i class="fa fa-circle-info"></i>
+          Tip: Keep your username simple and consistent across your posts 😄
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="contacts">
+    <div class="container footer-grid">
+      <div>
+        <h2 class="footer-title">Mavwu</h2>
+        <p class="footer-text">
+          Welcome to our small community of bloggers. Simple space, real practice 🙂✨
+        </p>
+
+        <div class="footer-contact">
+          <div><i class="fas fa-phone"></i> <span>+260 972073035</span></div>
+          <div><i class="fas fa-envelope"></i> <span>viwaplayz@gmail.com</span></div>
+        </div>
+
+        <div class="socials">
+          <a href="https://web.facebook.com/profile.php?id=61556678093170" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://www.youtube.com/@WanguCS" target="_blank" rel="noopener" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a href="https://www.tiktok.com/@mavwu" target="_blank" rel="noopener" aria-label="TikTok">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a href="https://wa.me/260972073035" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+
+        <a class="back-top" href="#pageTop">Back to top ↑</a>
+      </div>
+
+      <div class="contact-box">
+        <h3 class="contact-title">Send a message</h3>
+        <p class="contact-hint">This opens your email app with your message 🙂</p>
+
+        <textarea id="userMessage" class="contact-input" placeholder="Enter your message...."></textarea>
+
+        <button id="sendEmailButton" class="send-btn" type="button">
+          <i class="fas fa-envelope"></i> Send
+        </button>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 Mavwu | Designed by Alfred Mavwu
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Contact via mailto (same logic)
+      const sendBtn = document.getElementById('sendEmailButton');
+      const msgEl = document.getElementById('userMessage');
+
+      if (sendBtn && msgEl) {
+        sendBtn.addEventListener('click', () => {
+          const me = 'viwaplayz@gmail.com';
+          const userMessage = msgEl.value.trim();
+
+          if (!userMessage) {
+            alert('Please enter a message first 🙂');
+            return;
+          }
+
+          const subject = encodeURIComponent('Mavwu Blog Feedback');
+          const body = encodeURIComponent(userMessage);
+          window.location.href = `mailto:${me}?subject=${subject}&body=${body}`;
+        });
+      }
+
+      // Mobile nav menu (same logic)
+      const navMenu = document.getElementById('navMenu');
+      const menuToggle = document.getElementById('toggle');
+      const closeMenu = document.getElementById('close');
+
+      const openMenu = () => navMenu.classList.add('show');
+      const closeNav = () => navMenu.classList.remove('show');
+
+      if (menuToggle && closeMenu && navMenu) {
+        menuToggle.addEventListener('click', openMenu);
+        closeMenu.addEventListener('click', closeNav);
+
+        menuToggle.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') openMenu();
+        });
+
+        closeMenu.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') closeNav();
+        });
+
+        navMenu.querySelectorAll('a').forEach(a => {
+          a.addEventListener('click', closeNav);
+        });
+      }
+
+      // OPTIONAL: show message if URL has ?signup=success (keeps your idea)
+      const params = new URLSearchParams(window.location.search);
+      const signup = params.get('signup');
+      const msg = document.getElementById('signupmessage');
+      if (msg && signup === 'success') {
+        msg.textContent = "Signup successful! You can log in now 😄✅";
+      }
+    });
+  </script>
+
+</body>
+
+</html>

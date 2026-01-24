@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description" content="Mavwu account settings — change username, change password, or delete account." />
+  <meta name="author" content="Alfred Mavwu" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Candal|Lora">
+  <script src="https://kit.fontawesome.com/09e2129185.js" crossorigin="anonymous"></script>
+
+  <link rel="icon" href="/images/favicon.png" />
+  <link rel="stylesheet" href="settings.css" />
+
+  <title>Settings | Mavwu Blog</title>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="topbar" id="pageTop">
+    <div class="container topbar-inner">
+      <a class="brand" href="/main/dashboard.html" aria-label="Go to dashboard">
+        <span class="brand-name">Mavwu</span>
+      </a>
+
+      <i class="fa fa-bars menu-toggle" id="toggle" aria-label="Open menu" role="button" tabindex="0"></i>
+
+      <ul class="nav" id="navMenu" aria-label="Dashboard navigation">
+        <li class="nav-row">
+          <span class="nav-title">Menu</span>
+          <i class="fa fa-x menu-close" id="close" aria-label="Close menu" role="button" tabindex="0"></i>
+        </li>
+
+        <li><a href="/main/dashboard.html">Home</a></li>
+        <li><a href="/main/blogs/myposts.html">My Posts</a></li>
+        <li><a class="nav-active" href="/main/settings.html">Settings</a></li>
+        <li><a href="#contacts">Contact</a></li>
+
+        <!-- Account dropdown -->
+        <li class="dropdown">
+          <button class="dropdown-toggle" id="accountToggle" type="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-user"></i>
+            <span>Account</span>
+            <i class="fa fa-chevron-down drop-icon"></i>
+          </button>
+
+          <ul class="dropdown-menu" id="accountMenu" aria-label="Account menu">
+            <li><a class="menu-item" href="/main/blogeditor/blogeditor.html">Blog Editor</a></li>
+            <li><a class="menu-item logout" href="/logout">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="container">
+
+      <section class="card">
+        <div class="card-top">
+          <div>
+            <h1 class="title">Account Settings 🙂</h1>
+            <p class="subtitle">Update your account details below.</p>
+          </div>
+
+          <!-- Optional welcome if you later add it -->
+          <div class="welcome-badge" id="welcome-user" aria-live="polite"></div>
+        </div>
+
+        <!-- Change username -->
+        <section class="panel">
+          <h2 class="panel-title">
+            <i class="fa fa-user-pen"></i> Change username
+          </h2>
+          <p class="panel-hint">Pick something simple and easy to remember 😄</p>
+
+          <form id="change-username-form" action="/changeUsername" method="post" class="form">
+            <label class="field">
+              <span class="label">New username</span>
+              <div class="input-wrap">
+                <i class="fa fa-user icon"></i>
+                <input type="text" id="new-username" name="newUsername" placeholder="Enter new username" required />
+              </div>
+            </label>
+
+            <button type="submit" class="btn primary">
+              <i class="fa fa-check"></i> Change Username
+            </button>
+          </form>
+        </section>
+
+        <!-- Change password -->
+        <section class="panel">
+          <h2 class="panel-title">
+            <i class="fa fa-lock"></i> Change password
+          </h2>
+          <p class="panel-hint">Use a strong password you don’t reuse elsewhere 🙂</p>
+
+          <form id="change-password-form" action="/changePassword" method="post" class="form">
+            <label class="field">
+              <span class="label">Current password</span>
+              <div class="input-wrap">
+                <i class="fa fa-lock icon"></i>
+                <input type="password" id="old-password" name="oldPassword" placeholder="Enter current password" required />
+              </div>
+            </label>
+
+            <label class="field">
+              <span class="label">New password</span>
+              <div class="input-wrap">
+                <i class="fa fa-key icon"></i>
+                <input type="password" id="new-password" name="newPassword" placeholder="Enter new password" required />
+              </div>
+            </label>
+
+            <button type="submit" class="btn primary">
+              <i class="fa fa-check"></i> Change Password
+            </button>
+          </form>
+        </section>
+
+        <!-- Delete account -->
+        <section class="panel danger">
+          <h2 class="panel-title">
+            <i class="fa fa-triangle-exclamation"></i> Delete account
+          </h2>
+          <p class="panel-hint">
+            This is permanent. You will lose your posts and account access 😬
+          </p>
+
+          <form id="delete-account-form" action="/deleteAccount" method="post" class="form">
+            <label class="checkbox-row">
+              <input type="checkbox" id="confirm-delete" name="confirmDelete" required />
+              <span>I understand this will delete my account permanently.</span>
+            </label>
+
+            <button type="submit" class="btn danger-btn">
+              <i class="fa fa-trash"></i> Delete Account
+            </button>
+          </form>
+        </section>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="contacts">
+    <div class="container footer-grid">
+      <div>
+        <h2 class="footer-title">Mavwu</h2>
+        <p class="footer-text">
+          Welcome to our small community of bloggers. Simple space, real practice 🙂✨
+        </p>
+
+        <div class="footer-contact">
+          <div><i class="fas fa-phone"></i> <span>+260 972073035</span></div>
+          <div><i class="fas fa-envelope"></i> <span>viwaplayz@gmail.com</span></div>
+        </div>
+
+        <div class="socials">
+          <a href="https://web.facebook.com/profile.php?id=61556678093170" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://www.youtube.com/@WanguCS" target="_blank" rel="noopener" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a href="https://www.tiktok.com/@mavwu" target="_blank" rel="noopener" aria-label="TikTok">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a href="https://wa.me/260972073035" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+
+        <a class="back-top" href="#pageTop">Back to top ↑</a>
+      </div>
+
+      <div class="contact-box">
+        <h3 class="contact-title">Send a message</h3>
+        <p class="contact-hint">This opens your email app with your message 🙂</p>
+
+        <textarea id="userMessage" class="contact-input" placeholder="Enter your message...."></textarea>
+
+        <button id="sendEmailButton" class="send-btn" type="button">
+          <i class="fas fa-envelope"></i> Send
+        </button>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 Mavwu | Designed by Alfred Mavwu
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // OPTIONAL welcome from URL if you pass ?username=
+      const params = new URLSearchParams(window.location.search);
+      const username = params.get('username');
+      const welcome = document.getElementById('welcome-user');
+      if (welcome && username) {
+        welcome.innerHTML = `<b>${username}</b>`;
+      } else if (welcome) {
+        welcome.textContent = "Settings";
+      }
+
+      // Contact via mailto (same logic)
+      const sendBtn = document.getElementById('sendEmailButton');
+      const msgEl = document.getElementById('userMessage');
+
+      if (sendBtn && msgEl) {
+        sendBtn.addEventListener('click', () => {
+          const me = 'viwaplayz@gmail.com';
+          const userMessage = msgEl.value.trim();
+
+          if (!userMessage) {
+            alert('Please enter a message first 🙂');
+            return;
+          }
+
+          const subject = encodeURIComponent('Mavwu Blog Feedback');
+          const body = encodeURIComponent(userMessage);
+          window.location.href = `mailto:${me}?subject=${subject}&body=${body}`;
+        });
+      }
+
+      // Mobile nav menu
+      const navMenu = document.getElementById('navMenu');
+      const menuToggle = document.getElementById('toggle');
+      const closeMenu = document.getElementById('close');
+
+      const openMenu = () => navMenu.classList.add('show');
+      const closeNav = () => navMenu.classList.remove('show');
+
+      if (menuToggle && closeMenu && navMenu) {
+        menuToggle.addEventListener('click', openMenu);
+        closeMenu.addEventListener('click', closeNav);
+
+        menuToggle.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') openMenu();
+        });
+
+        closeMenu.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') closeNav();
+        });
+      }
+
+      // Account dropdown
+      const accountToggle = document.getElementById('accountToggle');
+      const accountMenu = document.getElementById('accountMenu');
+
+      const closeAccount = () => {
+        if (!accountMenu || !accountToggle) return;
+        accountMenu.classList.remove('open');
+        accountToggle.setAttribute('aria-expanded', 'false');
+      };
+
+      const toggleAccount = () => {
+        if (!accountMenu || !accountToggle) return;
+        const isOpen = accountMenu.classList.toggle('open');
+        accountToggle.setAttribute('aria-expanded', String(isOpen));
+      };
+
+      if (accountToggle && accountMenu) {
+        accountToggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleAccount();
+        });
+
+        document.addEventListener('click', closeAccount);
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') closeAccount();
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
