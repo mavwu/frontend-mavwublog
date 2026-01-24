@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://backend-mavwublog.onrender.com/$1"
+    }
+  ]
+}
