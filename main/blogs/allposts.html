@@ -220,7 +220,7 @@
       }
 
       function loadBlogPosts() {
-        fetch('/fetchBlogs')
+        fetch('/api/fetchBlogs')
           .then(response => response.json())
           .then(posts => {
             const postsContainer = document.getElementById('blog-posts-container');
