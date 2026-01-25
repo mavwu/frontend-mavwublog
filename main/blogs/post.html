@@ -258,7 +258,7 @@
         return;
       }
 
-      fetch(`/displayPost?id=${postId}`)
+      fetch(`/api/displayPost?id=${postId}`)
         .then(response => {
           if (!response.ok) throw new Error('Post not found');
           return response.json();
