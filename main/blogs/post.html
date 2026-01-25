@@ -88,6 +88,11 @@
       <!-- Comments -->
       <section class="card comments-page">
         <h2 class="title-sm">Comments 💬</h2>
+        
+        <div id="comments-section" class="comments-list">
+            <!-- comments load here -->
+          </div>
+
         <p class="subtitle">Say something helpful or respectful 🙂</p>
 
         <form id="comment-form" action="/api/addComment" method="post" class="comment-form">
@@ -97,10 +102,6 @@
             <button type="submit" class="btn primary">
               <i class="fa fa-paper-plane"></i> Add Comment
             </button>
-          </div>
-
-          <div id="comments-section" class="comments-list">
-            <!-- comments load here -->
           </div>
         </form>
       </section>
