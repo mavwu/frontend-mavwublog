@@ -80,7 +80,7 @@
           </h2>
           <p class="panel-hint">Pick something simple and easy to remember 😄</p>
 
-          <form id="change-username-form" action="/changeUsername" method="post" class="form">
+          <form id="change-username-form" action="/api/changeUsername" method="post" class="form">
             <label class="field">
               <span class="label">New username</span>
               <div class="input-wrap">
@@ -102,7 +102,7 @@
           </h2>
           <p class="panel-hint">Use a strong password you don’t reuse elsewhere 🙂</p>
 
-          <form id="change-password-form" action="/changePassword" method="post" class="form">
+          <form id="change-password-form" action="/api/changePassword" method="post" class="form">
             <label class="field">
               <span class="label">Current password</span>
               <div class="input-wrap">
@@ -134,7 +134,7 @@
             This is permanent. You will lose your posts and account access 😬
           </p>
 
-          <form id="delete-account-form" action="/deleteAccount" method="post" class="form">
+          <form id="delete-account-form" action="/api/deleteAccount" method="post" class="form">
             <label class="checkbox-row">
               <input type="checkbox" id="confirm-delete" name="confirmDelete" required />
               <span>I understand this will delete my account permanently.</span>

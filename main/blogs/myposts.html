@@ -201,7 +201,7 @@
         });
       }
 
-      // ===== BLOG POSTS (your same /myPosts logic) =====
+      // ===== BLOG POSTS  =====
       function formatDate(dateString) {
         const options = { day: 'numeric', month: 'long', year: 'numeric' };
         return new Date(dateString).toLocaleDateString('en-GB', options);
@@ -217,7 +217,7 @@
       }
 
       function loadMyBlogPosts() {
-        fetch('/myPosts')
+        fetch('/api/myPosts')
           .then(response => response.json())
           .then(posts => {
             const postsContainer = document.getElementById('blog-posts-container');

@@ -305,7 +305,7 @@
         if (saveBtn) saveBtn.style.display = 'inline-flex';
         if (hiddenPostId) hiddenPostId.value = postId;
 
-        fetch(`/getPostDetails?id=${postId}`)
+        fetch(`/api/getPostDetails?id=${postId}`)
           .then(response => response.json())
           .then(postDetails => {
             document.getElementById('blog-post-title').value = postDetails.title || '';
@@ -332,7 +332,7 @@
         }
 
         try {
-          const response = await fetch(`/editPost?id=${postId}`, {
+          const response = await fetch(`/api/editPost?id=${postId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ title, content }),

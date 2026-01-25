@@ -90,7 +90,7 @@
         <h2 class="title-sm">Comments 💬</h2>
         <p class="subtitle">Say something helpful or respectful 🙂</p>
 
-        <form id="comment-form" action="/addComment" method="post" class="comment-form">
+        <form id="comment-form" action="/api/addComment" method="post" class="comment-form">
           <textarea rows="4" name="content" class="comment-input" placeholder="Enter your comment..." required></textarea>
 
           <div class="comment-form-row">
@@ -334,7 +334,7 @@
         const params = new URLSearchParams(window.location.search);
         const postId = params.get('id');
 
-        fetch(`/getComments?postId=${postId}`)
+        fetch(`/api/getComments?postId=${postId}`)
           .then(response => response.json())
           .then(comments => displayComments(comments))
           .catch(error => {
@@ -362,7 +362,7 @@
       const params = new URLSearchParams(window.location.search);
       const postId = params.get('id');
 
-      fetch(`/deletePost?id=${postId}`, { method: 'DELETE' })
+      fetch(`/api/deletePost?id=${postId}`, { method: 'DELETE' })
         .then(response => {
           if (response.ok) {
             window.location.href = '/main/blogs/myposts.html';
