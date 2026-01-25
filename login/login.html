@@ -53,7 +53,6 @@
           Log in to your account to start writing. Don’t have one? <a class="inline-link" href="/signup/signup.html">Sign up here</a> 😄
         </p>
 
-        <!-- Optional message area (you had signupmessage) -->
         <p id="signupmessage" class="notice" aria-live="polite"></p>
 
         <form action="/api/login" method="post" class="form">
@@ -186,7 +185,7 @@
         });
       }
 
-      // OPTIONAL: show message if URL has ?signup=success (keeps your idea)
+      // show message if URL has ?signup=success
       const params = new URLSearchParams(window.location.search);
       const signup = params.get('signup');
       const msg = document.getElementById('signupmessage');
