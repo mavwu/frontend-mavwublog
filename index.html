@@ -149,6 +149,11 @@
   </footer>
 
   <script>
+    // wake up background server on render
+    fetch("/api/health", { cache: "no-store"})
+      .then(() => console.log("Backend server is awake"))
+      .catch(() => console.log("Backend warm failed (will retry on user actions)"));
+      
     document.addEventListener('DOMContentLoaded', () => {
       // Welcome username: ?username=Alfy
       const params = new URLSearchParams(window.location.search);
