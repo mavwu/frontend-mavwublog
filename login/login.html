@@ -56,6 +56,8 @@
         <p id="signupmessage" class="notice" aria-live="polite"></p>
 
         <form action="/api/login" method="post" class="form">
+          <input type="hidden" id="next" name="next" value="" />
+
           <label class="field">
             <span class="label">Username</span>
             <div class="input-wrap">
@@ -188,7 +190,12 @@
       // show message if URL has ?signup=success
       const params = new URLSearchParams(window.location.search);
       const signup = params.get('signup');
+      const next = params.get('next');
       const msg = document.getElementById('signupmessage');
+      const nextInput = document.getElementById('next');
+      if (nextInput && next) {
+        nextInput.value = next;
+      }
       if (msg && signup === 'success') {
         msg.textContent = "Signup successful! You can log in now 😄✅";
       }

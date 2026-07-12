@@ -12,6 +12,7 @@
 
   <link rel="stylesheet" href="blogs.css">
   <link rel="icon" href="/images/favicon.png" />
+  <script src="/main/auth.js"></script>
   <title>Post | Mavwu</title>
 </head>
 
@@ -48,7 +49,7 @@
 
           <ul class="dropdown-menu" id="accountMenu" aria-label="Account menu">
             <li><a class="menu-item" href="/main/blogeditor/blogeditor.html">Blog Editor</a></li>
-            <li><a class="menu-item logout" href="/logout">Logout</a></li>
+            <li><a class="menu-item logout" href="/api/logout">Logout</a></li>
           </ul>
         </li>
       </ul>
@@ -99,6 +100,7 @@
         <p class="subtitle">Say something helpful or respectful 🙂</p>
 
         <form id="comment-form" action="/api/addComment" method="post" class="comment-form">
+          <input type="hidden" id="comment-post-id" name="postId" value="" />
           <textarea rows="4" name="content" class="comment-input" placeholder="Enter your comment..." required></textarea>
 
           <div class="comment-form-row">
@@ -248,6 +250,10 @@
     document.addEventListener('DOMContentLoaded', () => {
       const params = new URLSearchParams(window.location.search);
       const postId = params.get('id');
+      const commentPostId = document.getElementById('comment-post-id');
+      if (commentPostId && postId) {
+        commentPostId.value = postId;
+      }
 
       const fullPostContainer = document.getElementById('full-post-container');
 
