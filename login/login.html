@@ -193,8 +193,22 @@
       const next = params.get('next');
       const msg = document.getElementById('signupmessage');
       const nextInput = document.getElementById('next');
+      const loginForm = document.querySelector('form[action="/api/login"]');
+      const submitButton = document.getElementById('submit-button');
       if (nextInput && next) {
         nextInput.value = next;
+      }
+      if (loginForm && submitButton) {
+        loginForm.addEventListener('submit', () => {
+          submitButton.disabled = true;
+          submitButton.classList.add('loading');
+          submitButton.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Waking server...';
+
+          if (msg) {
+            msg.classList.add('login-wait');
+            msg.textContent = "Logging you in. If the server was asleep, this can take a moment.";
+          }
+        });
       }
       if (msg && signup === 'success') {
         msg.textContent = "Signup successful! You can log in now 😄✅";

@@ -197,6 +197,18 @@ html, body {
   background: #1b3a9a;
 }
 
+.btn.loading,
+.btn:disabled {
+  cursor: wait;
+  opacity: 0.78;
+  transform: none;
+  box-shadow: none;
+}
+
+.login-wait {
+  color: #374151;
+}
+
 /* Secondary */
 .btn.secondary {
   background: #111827;
