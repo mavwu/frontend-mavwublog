@@ -1,8 +1,8 @@
 (async () => {
   const loginPath = "/login/login.html";
-  let loaderTimer = null;
-  let longWaitTimer = null;
   let loaderDone = false;
+
+  document.documentElement.classList.add("auth-pending");
 
   function addLoaderStyles() {
     if (document.getElementById("mavwu-auth-loader-styles")) return;
@@ -52,6 +52,14 @@
         line-height: 1.5;
       }
 
+      html.auth-pending body {
+        visibility: hidden;
+      }
+
+      html.auth-ready body {
+        visibility: visible;
+      }
+
       @keyframes auth-loader-spin {
         to { transform: rotate(360deg); }
       }
@@ -94,9 +102,9 @@
 
   function hideLoader() {
     loaderDone = true;
-    clearTimeout(loaderTimer);
-    clearTimeout(longWaitTimer);
     document.getElementById("auth-loader")?.remove();
+    document.documentElement.classList.remove("auth-pending");
+    document.documentElement.classList.add("auth-ready");
   }
 
   function redirectToLogin() {
@@ -117,8 +125,8 @@
   }
 
   try {
-    loaderTimer = setTimeout(showLoader, 300);
-    longWaitTimer = setTimeout(showLongWaitMessage, 6000);
+    showLoader();
+    setTimeout(showLongWaitMessage, 6000);
 
     const response = await fetch("/api/auth/me", {
       cache: "no-store",
